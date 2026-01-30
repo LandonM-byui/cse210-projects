@@ -1,6 +1,6 @@
 using System;
 using System.IO.Enumeration;
-
+using System.IO; 
 class Program
 {   
     static void Main(string[] args)
@@ -8,8 +8,8 @@ class Program
         PromptGen _gen = new PromptGen();
         Journal _journal = new Journal();
         int input = 0;
+        Console.WriteLine("Welcome to the Journal Program!");
         do {
-            Console.WriteLine("Welcome to the Journal Program!");
             Console.WriteLine("Please enter one of the following choices:");
             Console.WriteLine("1. Write");
             Console.WriteLine("2. Display");
@@ -40,14 +40,33 @@ class Program
                 Console.WriteLine("What is the file name?");
                 string fileName = Console.ReadLine();
                 Console.WriteLine("");
-                if (File.Exists(fileName)){
+                if (System.IO.File.Exists(fileName)){
                     string[] file = System.IO.File.ReadAllLines($"{fileName}");
                     _journal._entries.Clear();
 
-                    foreach (string line in file)
+                    /*Password system for opening file*/
+                    Console.WriteLine("Please enter the file's password: ");
+                    string attempt = Console.ReadLine();
+                    Console.WriteLine("");
+                    if (attempt == file[0])
                     {
-                        string[] parts = line.Split(",");             
-                        _journal.MakeEntry(parts[0], parts[1], parts[2]);                    
+                        foreach (string line in file)
+                        {
+                            if (line != file[0])
+                            {
+                            string[] parts = line.Split(",");             
+                            _journal.MakeEntry(parts[0], parts[1], parts[2]);    
+                            }
+                            else
+                            {
+                                _journal._password = line;
+                            }      
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Incorrect password");
+                        file = [];
                     }
                 }
                 else
@@ -60,6 +79,10 @@ class Program
              Console.WriteLine("Name the saved journal: ");
              string filename = Console.ReadLine();
              Console.WriteLine("");
+             Console.WriteLine("Add a password to the journal: ");
+             string password = Console.ReadLine();
+             Console.WriteLine("");
+             _journal._password = password;
              _journal.SaveEntries(filename);
                 
             }

@@ -3,6 +3,7 @@ public class Journal
 
 {
     public List<Entry> _entries = new List<Entry>();
+    public string _password;
     public void MakeEntry(string date, string prompt, string input)
     {
         Entry entry = new Entry();
@@ -29,6 +30,7 @@ public class Journal
            
         using (StreamWriter outputFile = new StreamWriter(filename))
         {
+            outputFile.WriteLine($"{_password}");
             foreach(Entry entry in _entries)
             {
                 outputFile.WriteLine($"{entry._date},{entry._prompt},{entry._userInput}");
