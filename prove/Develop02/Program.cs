@@ -44,7 +44,7 @@ class Program
                     string[] file = System.IO.File.ReadAllLines($"{fileName}");
                     _journal._entries.Clear();
 
-                    /*Password system for opening file*/
+                    /*Password system for opening file*/ 
                     Console.WriteLine("Please enter the file's password: ");
                     string attempt = Console.ReadLine();
                     Console.WriteLine("");

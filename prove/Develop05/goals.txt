@@ -1,0 +1,5 @@
+235
+OneTimeGoal,A,bcdef,50,True
+EternalGoal,L,mnop,25,
+MultiGoal,S,tuv,10,40,4, 0
+ConsecutiveGoal,Temple,EveryWeek,50,3
