@@ -1,7 +1,7 @@
 public class Enemy : Character
 {
     private Spellcaster _spells = null;
-    private List<string> _resistances;
+    private List<string> _resistances = new List<string>();
 
     public Enemy (string name, int hp, List<string> res, int curHP = -1, int init = -10) : base (name, hp, curHP, init)
     {
@@ -25,9 +25,7 @@ public class Enemy : Character
     {
         Console.WriteLine("What is the damage type? ");
         string type = Console.ReadLine();
-        {
-            
-        }
+        
         if(_resistances.Contains(type))
         {
             float n = num / 2;
@@ -37,5 +35,15 @@ public class Enemy : Character
         {
             _curHP -= num;
         }
+    }
+
+    public override string getInfo()
+    {   
+        var info = $"{_name} ({_initiative}): {_curHP}/{_hp}";
+        if (_spells != null)
+        {
+            info += _spells.display();   
+        }
+        return info;
     }
 }

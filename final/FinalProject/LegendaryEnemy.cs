@@ -22,7 +22,7 @@ public class LegendaryEnemy : Enemy
 
     public void printLegendary()
     {
-        Console.WriteLine($"{_curActions}/{_maxActions} Options: {_actions}");
+        Console.WriteLine($"------ Legendary Actions: {_curActions}/{_maxActions} Options: {_actions}");
     }
 
 }

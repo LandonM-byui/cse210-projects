@@ -14,15 +14,19 @@ public class Spellcaster
 
     public void useSpell(int level)
     {
-        _spellSlots[level] -= 1;
+        if (_spellSlots[level] > 0)
+        {
+            _spellSlots[level] -= 1;   
+        }
     }
 
-    public void display()
+    public string display()
     {
+        string str = " Spells: ";
         foreach (KeyValuePair<int, int> slot in _spellSlots)
         {
-            Console.Write($"{slot.Key}: {slot.Value} | ");
+            str += $" Lv {slot.Key}: {slot.Value} |";
         }
-        Console.WriteLine("");
+        return str;
     }
 }

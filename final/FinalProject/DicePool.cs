@@ -1,6 +1,6 @@
 public class DicePool
 {
-    private List<Dice> _dicePool;
+    private List<Dice> _dicePool = new List<Dice>();
 
     public DicePool()
     {
@@ -16,6 +16,8 @@ public class DicePool
         _dicePool.Add(d12);
         Dice d20 = new Dice(20);
         _dicePool.Add(d20);
+        Dice d100 = new Dice(100);
+        _dicePool.Add(d100);
     }
 
     public Dice GetDice(int d)
@@ -43,6 +45,10 @@ public class DicePool
         else if (d == 20)
         {
             return _dicePool[5];
+        }
+        else if (d == 100)
+        {
+            return _dicePool[6];
         }
         else
         {
