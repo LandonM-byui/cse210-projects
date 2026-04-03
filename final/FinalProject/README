@@ -1,0 +1,4 @@
+##I chose to do the open ended project for this program. I have made an initiative tracker with a built in dice roller for the game Dungeons and Dragons. 
+##The tracker starts out with some premade characters and enemies, but the program loop allows the user to add or delete characters. 
+##When adding a character to the initiative, the program will walk the user through what the user needs to input to create a player character, enemy, or legendary enemy.
+##You can also do actions, such as adding damage, healing, using spells, or using legendary abilities of enemies.
